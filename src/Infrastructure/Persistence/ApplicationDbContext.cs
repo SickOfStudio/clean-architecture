@@ -34,6 +34,12 @@ namespace CleanArchitecture.Infrastructure.Persistence
 
         public DbSet<TodoItem> TodoItems { get; set; }
 
+        public DbSet<BorrowedBook> BorrowedBooks => throw new System.NotImplementedException();
+
+        public DbSet<AvailableBook> AvailableBooks => throw new System.NotImplementedException();
+
+        public DbSet<ReservedBook> ReservedBookss => throw new System.NotImplementedException();
+
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())

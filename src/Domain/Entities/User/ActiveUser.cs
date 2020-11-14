@@ -25,7 +25,11 @@ namespace CleanArchitecture.Domain.Entities
 		{
 			if (hasUserNotReachedLimitOfBooks())
 			{
-				ReservedBook reservedBook = new ReservedBook(availableBook.Id, id);
+				ReservedBook reservedBook = new ReservedBook()
+				{
+					Id = availableBook.Id, 
+					AssignedUserId = availableBook.UserId
+				};
 				reservedBooks.Add(reservedBook);
 				return reservedBook;
 			}
@@ -39,7 +43,11 @@ namespace CleanArchitecture.Domain.Entities
 		{
 			if (hasUserNotReachedLimitOfBooks())
 			{
-				BorrowedBook borrowedBook = new BorrowedBook(reservedBook.Id, id);
+				BorrowedBook borrowedBook = new BorrowedBook()
+				{ 
+					Id = reservedBook.Id,
+					UserId = reservedBook.AssignedUserId
+				};
 				borrowedBooks.Add(borrowedBook);
 				return borrowedBook;
 			}
@@ -52,11 +60,12 @@ namespace CleanArchitecture.Domain.Entities
 		public virtual AvailableBook giveBack(BorrowedBook borrowedBook)
 		{
             
-            bool isBookRemovedFromUserAccount = borrowedBooks.Any(book => book.AssignedUserId == borrowedBook.AssignedUserId);
+            bool isBookRemovedFromUserAccount = borrowedBooks.Any(book => book.UserId == borrowedBook.UserId);
 			
 			if (isBookRemovedFromUserAccount)
 			{
-				return new AvailableBook(borrowedBook.Id);
+				return new AvailableBook(){
+					Id = borrowedBook.Id};
 			}
 			else
 			{

@@ -11,7 +11,7 @@ namespace CleanArchitecture.Domain.Entities
 
 		public long Id { get; set; }
 
-		public long? AssignedUserId { get; set; }
+		public long AssignedUserId { get; set; }
 
 		public DateTime ReservedDate { get; set; }
 	}
