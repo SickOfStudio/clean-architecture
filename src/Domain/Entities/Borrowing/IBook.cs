@@ -1,8 +1,8 @@
 ﻿namespace CleanArchitecture.Domain.Entities
 {
-	internal interface Book
+	internal interface IBook
 	{
-		long? IdAsLong {get;}
+		long Id {get;}
 	}
 
 }

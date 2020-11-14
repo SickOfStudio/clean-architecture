@@ -21,6 +21,10 @@
 
   <ItemGroup>
     <Folder Include="Common\Mappings\" />
+    <Folder Include="Borrowing\Queries\" />
+    <Folder Include="Inventory\" />
+    <Folder Include="Email\" />
+    <Folder Include="User\" />
   </ItemGroup>
 
 </Project>
